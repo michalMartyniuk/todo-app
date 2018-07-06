@@ -1,0 +1,28 @@
+.Input {
+  display: block;
+  outline: none;
+  width: 100%;
+  padding: 1rem;
+}
+
+.inputElement {
+  border: 1px solid #00000070;
+  font-size: 1.8rem;
+  margin: 1rem 0;
+  width: 100%;
+  padding: .7rem;
+}
+
+
+.invalid {
+  width: 100%;  
+  outline: 1px solid red;
+}
+
+.invalidClass {
+  border-radius: .5rem;
+  font-size: 1.7rem;
+  background-color: #ecc1c1;
+  padding: .2rem 1rem;
+  margin-top: .5rem;
+}
