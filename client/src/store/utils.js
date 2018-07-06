@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const fetcher = (method, endPoint, data, auth=null) => {
   if(auth) console.log('AUTH');
-  const url = `http://localhost:7000/api/${endPoint}`
+  const url = `/api/${endPoint}`
   const headers = auth ? 
     { 
       'authorization': `Bearer ${localStorage.getItem('token')}`,
