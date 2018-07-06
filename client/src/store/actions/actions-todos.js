@@ -4,19 +4,17 @@ import { fetcher } from '../utils';
 
 export const getTodos = () => {
   return dispatch => {
-    if(localStorage.getItem('token')) {
-      return new Promise( (resolve, reject) => {
-        fetcher('GET', 'todos/get', undefined, 'auth')
-        .then( res => {
-          const todos = res.data.todos;
-          dispatch({type: types.SET_TODOS, todos});
-          resolve(todos);
-        })
-        .catch( error => {
-          reject(error);
-        })
+    return new Promise( (resolve, reject) => {
+      fetcher('GET', 'todos/get', undefined, 'auth')
+      .then( res => {
+        const todos = res.data.todos;
+        dispatch({type: types.SET_TODOS, todos});
+        resolve(todos);
       })
-    }
+      .catch( error => {
+        reject(error);
+      })
+    })
   } 
 }
 

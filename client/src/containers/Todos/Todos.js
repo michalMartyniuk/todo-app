@@ -13,9 +13,11 @@ class Todos extends Component {
   }
 
   componentDidMount() {
-    this.props.getTodos()
-      .then( todos => console.log(todos))
-      .catch( error => console.log(error))
+    if(localStorage.getItem('token')) {
+      this.props.getTodos()
+        .then( todos => console.log(todos))
+        .catch( error => console.log(error))
+    }
   }
 
   completedCheckboxHandler = () => {

@@ -5,9 +5,6 @@ const jwt = require('jsonwebtoken');
 const keys = require('../config/keys');
 const updater = require('../utils');
 
-router.get('/', (req, res) => {
-  
-});
 
 router.get('/todos/get', ensureToken, (req, res) => {
   res.json({
