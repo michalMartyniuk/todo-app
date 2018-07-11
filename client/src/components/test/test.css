@@ -1,0 +1,31 @@
+.group {
+  background: white;
+  font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.listItem {
+  background: orange;
+  border: 1px solid black;
+  margin: 1rem;
+  padding: 1rem;
+  width: 60%;
+}
+
+.enterActive {
+  background-color: orange;
+}
+
+.enter {
+  background-color: blue;
+}
+
+.leave {
+  background-color: blue;
+}
+
+.leaveActive {
+  background-color: green;
+}

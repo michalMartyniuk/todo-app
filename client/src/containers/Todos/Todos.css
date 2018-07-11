@@ -1,4 +1,6 @@
 .Todos {
+  font-family: 'Gaegu', cursive;
+  font-size: 2.2rem;
   display: flex;
   flex-direction: column;
 }
@@ -7,38 +9,193 @@
   text-align: center;
 }
 
-.inputWrapper {
-  display: flex;
-  width: 60%;
-  margin: auto;
-}
-
-.checkboxWrapper {
-  display: flex;
-  width: 60%;
-  margin: auto;
-}
-
-.completedCheckbox {
-  font-size: 1.7rem;
+.upperDiv {
+  color: #152446;
+  text-align: center;
+  background-color: #e39914;
+  width: 85%;
   margin: 1rem auto;
-  margin-bottom: 3rem;
+  margin-top: 1rem;
+  border: none;
+  border-radius: 1rem;
+  padding: .7rem;
+  border-top-left-radius: 10rem;
+  border-top-right-radius: 10rem;
+  font-weight: bold;
+  letter-spacing: .3rem;
+  box-shadow: 0px 0px 1px 2px #ffc153;
 }
 
-.completedCheckbox input {
-  transform: scale(1.8);
-  margin-right: .7rem;
+.inputWrapper {
+  height: 170px;
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  margin: auto;
+  background-color: #2a61e2;
+  padding: .5rem 0rem;
+  border-radius: 10rem;
+  box-shadow: 0px 0px 5px 2px rgb(21, 21, 73)
+}
+
+.completedWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.completed {
+  color: white;
+  background-color: #2a61e2;
+  font-size: 1.8rem;
+  padding: .7rem 3rem;
+  border-bottom-left-radius: 10rem;
+  border-bottom-right-radius: 10rem;
+  box-shadow: 0px 4px 5px 0px rgb(21, 21, 73);
+  cursor: pointer;
+  letter-spacing: .5rem;
+  margin-bottom: 5rem;
+  transition: all .2s;
+}
+
+.completed:focus, .addButton:focus, .todoInput:focus {
+  outline: none;
+}
+
+.completedSmall {
+  display: none;
+  color: white;
+  background-color: #2a61e2;
+  font-size: 1.8rem;
+  padding: .7rem 3rem;
+  border-bottom-left-radius: 10rem;
+  border-bottom-right-radius: 10rem;
+  box-shadow: 0px 4px 5px 0px rgb(21, 21, 73);
+  cursor: pointer;
+  letter-spacing: .5rem;
+  margin-bottom: 5rem;
+  transition: all .2s;
+}
+
+.completed:hover {
+  background-color: #13b513;
+  box-shadow: 0px 4px 5px 0px #13b513;
+}
+
+.completedSmall:hover {
+  background-color: #13b513;
+  box-shadow: 0px 4px 5px 2px #13b513;
+}
+
+.completedClicked {
+  background-color: #13b513;
+  box-shadow: 0px 4px 5px 2px #13b513;
 }
 
 .todoInput {
-  flex: 1;
+  width: 90%;
   margin: auto 0;
-  font-size: 1.8rem;
-  padding: .5rem 1rem;
+  font-size: 2rem;
+  padding: .5rem 2rem;
+  margin: 0 auto;
+  border-radius: 1rem;
+  box-shadow: 0px 0px 7px 1px rgb(96, 229, 17);
 }
 
 .addButton {
-  font-size: 1.8rem;
-  padding: .5rem 1.5rem;
-  margin: auto;  
+  font-family: 'Gaegu', cursive;
+  color: #152446;
+  background-color: #e39914;
+  white-space: nowrap;
+  font-size: 2.2rem;
+  width: 85%;
+  margin: 1rem auto;
+  margin-bottom: 0;
+  border: none;
+  border-radius: 1rem;
+  padding: .7rem;
+  border-bottom-left-radius: 10rem;
+  border-bottom-right-radius: 10rem;
+  letter-spacing: .3rem;
+  font-weight: bold;
+  box-shadow: 0px 0px 1px 2px #ffc153;
+  transition: all .4s;
+}
+
+.addButton:hover {
+  box-shadow: 0px 0px 1px 2px #ffae1c;
+  background-color: #ffae1c;
+}
+
+.enterActive {
+  animation: entering .7s;
+}
+
+.exitActive {
+  animation: exiting .7s;
+}
+
+@keyframes entering {
+  0% {
+    opacity: 0;
+    transform: translateY(200%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+@keyframes exiting {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(200%);
+  }
+}
+
+@media (max-width: 760px) {
+  .inputWrapper {
+    flex-direction: column;
+    width: 80%;
+  }
+
+  .checkboxWrapper {
+    width: 80%;
+  }
+
+  .completed {
+    display: none;
+  }
+
+  .completedSmall {
+    display: block;
+  }
+}
+
+@media (max-width: 450px) {
+  .upperDiv {
+    padding: .5rem 1.5rem;
+    font-size: 1.5rem;
+  }
+
+  .addButton {
+    width: 70%;
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 500px) and (min-width: 450px) {
+  .upperDiv {
+    padding: .7rem 1.5rem;
+    font-size: 1.5rem;
+    width: 90%;
+    margin-top: 2.3rem;
+  }
+
+  .addButton {
+    width: 80%;
+    font-size: 1.5rem;
+  }
 }

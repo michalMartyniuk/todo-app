@@ -3,13 +3,14 @@ import styles from './Todos.css';
 import { connect } from 'react-redux';
 import { getTodos, add, remove, complete, edit, update } from '../../store/actions/actions-todos';
 import Todo from '../../components/todo/todo';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 class Todos extends Component {
 
   state = {
     addValue: '',
     editValue: '',
-    completedCheckbox: false,
+    completedState: false,
   }
 
   componentDidMount() {
@@ -20,10 +21,10 @@ class Todos extends Component {
     }
   }
 
-  completedCheckboxHandler = () => {
+  completedHandler = () => {
     this.setState({
-      completedCheckbox: !this.state.completedCheckbox
-    })
+      completedState: !this.state.completedState
+    }, () => console.log(this.state.completedState))
   }
 
   randomId = (text) => {
@@ -39,65 +40,99 @@ class Todos extends Component {
     this.setState({ addValue: '' });
   }
 
+  inputKeyHandler = (e) => {
+    if(e.key === 'Enter') {
+      this.addHandler();    
+    }
+  }
+
   editHandler = (id) => { 
     this.props.update(id, this.state.editValue);
   }
 
+  createTodo = (todo) => {
+    return <Todo
+        key={todo.id}
+        todo={todo}
+        complete={this.props.complete}
+        remove={this.props.remove}
+        edit={this.editHandler}
+        editValue={this.state.editValue}
+        editChange={(e) => this.setState({ editValue: e.target.value })}
+      />
+  }
+
   render() {
     return (
-      <div className={styles.Todos}>
+      <TransitionGroup
+        className={styles.Todos}
+        component="div"
+      >
         <div className={styles.inputWrapper}>
+          <div className={styles.upperDiv}>What do you need to-do?</div>
           <input 
             type="text" 
             className={styles.todoInput}
             value={this.state.addValue}
             onChange={(e) => this.setState({ addValue: e.target.value })}
+            onKeyDown={this.inputKeyHandler}
           />
           <button
             className={styles.addButton}
             onClick={this.addHandler}
-          >Add todo</button>
+          >Add</button>
         </div>
-        <div className={styles.checkboxWrapper}>
-          <div className={styles.completedCheckbox}>
-            <input 
-              type="checkbox"
-              onChange={this.completedCheckboxHandler}
-              checked={this.state.completedCheckbox}
-            />
-            <span>Completed</span>                                     
+        <div className={styles.completedWrapper}>
+          <div
+            className={[
+              styles.completed,
+              this.state.completedState ? styles.completedClicked : null
+            ].join(' ')}
+            onClick={this.completedHandler}
+          >
+            <span>Show completed</span>                                     
+          </div>
+          <div
+            className={[
+              styles.completedSmall,
+              this.state.completedState ? styles.completedClicked : null
+            ].join(' ')}
+            onClick={this.completedHandler}
+          >
+            <i className="fas fa-check"></i>
           </div>
         </div>
-
         {this.props.todos.map(todo => {
-          if(this.state.completedCheckbox) {
+          if(this.state.completedState) {
             if(todo.complete) {
-              return <Todo
+              return <CSSTransition
+                classNames = {{
+                  enterActive: styles.enterActive,
+                  exitActive: styles.exitActive
+                }}
                 key={todo.id}
-                todo={todo}
-                complete={this.props.complete}
-                remove={this.props.remove}
-                edit={this.editHandler}
-                editValue={this.state.editValue}
-                editChange={(e) => this.setState({ editValue: e.target.value })}
-              />
+                timeout={600}
+              >
+                {this.createTodo(todo)}
+              </CSSTransition>
             }
           }
           else {
             if(!todo.complete) {
-              return <Todo
+              return <CSSTransition
+                classNames = {{
+                  enterActive: styles.enterActive,
+                  exitActive: styles.exitActive,
+                }}
                 key={todo.id}
-                todo={todo}
-                complete={this.props.complete}
-                remove={this.props.remove}
-                edit={this.editHandler}
-                editValue={this.state.editValue}
-                editChange={(e) => this.setState({ editValue: e.target.value })}
-              />
+                timeout={600}
+              >
+                {this.createTodo(todo)}
+              </CSSTransition>
             }
           }
         })}
-      </div>
+      </TransitionGroup>
     )
   }
 }

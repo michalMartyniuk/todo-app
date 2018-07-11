@@ -1,5 +1,6 @@
 html {
   font-size: 10px;
+  height: 100%;
 }
 
 * {
@@ -7,6 +8,8 @@ html {
 }
 
 body {
+  background: 
+  linear-gradient(to bottom right, #e3d915, #a6ce1e, #3bb340, #1561E2, #6f77de,        #6186e0, #1561E2, #3BB33A, #a6ce1e, #e3d915);
   box-sizing: border-box;
   margin: 0;
   padding: 0;

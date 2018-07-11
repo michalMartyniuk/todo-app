@@ -1,7 +1,6 @@
 import axios from 'axios';
 
 export const fetcher = (method, endPoint, data, auth=null) => {
-  if(auth) console.log('AUTH');
   const url = `/api/${endPoint}`
   const headers = auth ? 
     { 

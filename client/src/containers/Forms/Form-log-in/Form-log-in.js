@@ -87,7 +87,7 @@ class LoginForm extends Component {
         <form className={styles.Form} onSubmit={this.formSubmitHandler}>
           {inputs}
           <div className={styles.wrapper}>
-            <button className={styles.login} onClick={this.props.formSubmitHandler}>Login</button>
+            <button className={styles.loginBtn} onClick={this.props.formSubmitHandler}>Login</button>
           </div>
         </form>
     )

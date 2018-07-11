@@ -11,6 +11,32 @@
   z-index: 11;
 }
 
+.enterActive {
+  animation: modalEnter 1.1s;
+}
+
+.exitActive {
+  animation: modalExit 1.1s;
+}
+
+@keyframes modalEnter {
+  0% { 
+    opacity: 0;
+    transform: translate(-50%, 50%);
+  }
+  100% { opacity: 1 }
+}
+
+@keyframes modalExit {
+  0% { 
+    opacity: 1;
+  }
+  100% { 
+    opacity: 0;
+    transform: translate(-50%, 50%);
+  }
+}
+
 .cardButtons {
   display: flex;
 }

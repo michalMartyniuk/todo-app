@@ -5,15 +5,17 @@ import LoginForm from './containers/Forms/Form-log-in/Form-log-in';
 import SignUpForm from './containers/Forms/Form-sign-up/Form-sign-up';
 import Modal from './components/UI/Modal/Modal';
 import Backdrop from './components/UI/Backdrop/Backdrop';
-import Navigation from './components/UI/navigation/navigation';
+import Navigation from './components/UI/Navigation/Navigation';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import types from './store/actionTypes';
 import { logout } from './store/actions/actions-auth';
+import Sidedrawer from './components/UI/Sidedrawer/Sidedrawer';
 
 class App extends Component {
 
   state = {
+    sidedrawerState: false,
     modalState: {
       login: false,
       signup: false
@@ -31,7 +33,12 @@ class App extends Component {
 
   backdropClickHandler = () => {
     this.props.resetError();
-    this.closeModal()
+    this.closeModal();
+    if(this.state.sidedrawerState === true) {
+      this.setState({
+        sidedrawerState: false
+      })
+    }
   }
 
   authHandler = (auth) => {
@@ -49,6 +56,12 @@ class App extends Component {
     })
   }
 
+  toggleSidedrawer = () => {
+    this.setState({
+      sidedrawerState: !this.state.sidedrawerState,
+    })
+  }
+
   render() {
     return (
       <div className="App">
@@ -56,14 +69,16 @@ class App extends Component {
           show={
             this.state.modalState.login || 
             this.state.modalState.signup ||
-            this.props.error
+            this.props.error ||
+            this.state.sidedrawerState
           } 
           click={this.backdropClickHandler}  
         />
         <Navigation 
-          loginClick={() => this.authHandler('login')}
-          signupClick={() => this.authHandler('signup')}
-          logoutClick={this.props.logout}
+          loginModal={() => this.authHandler("login")}
+          signupModal={() => this.authHandler("signup")}
+          logout={this.props.logout}
+          toggleSidedrawer={this.toggleSidedrawer}
         />
         <Modal 
           show={this.state.modalState.login}
@@ -84,8 +99,14 @@ class App extends Component {
         >
           <p className={styles.errorMsg}>{this.props.error}</p>
         </Modal>
-        <Todos test="Test"/>
-        
+        <Sidedrawer 
+          click={this.backdropClickHandler} 
+          show={this.state.sidedrawerState}
+          logout={this.props.logout}
+          loginModal={() => this.authHandler("login")}
+          signupModal={() => this.authHandler("signup")}
+        />
+        <Todos/>
       </div>
     );
   }

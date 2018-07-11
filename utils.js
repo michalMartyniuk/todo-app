@@ -3,7 +3,7 @@ module.exports = updater = (model, id, property, data) => {
     model.findByIdAndUpdate( id, { [property]: data }, { new: true }, (err, result) => {
       if(err) reject(err);
       if(!result) reject("User not found");
-      resolve(result);  
+      resolve(result); 
     })
   })
 }

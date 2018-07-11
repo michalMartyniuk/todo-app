@@ -4,12 +4,12 @@ export default {
       label: 'Email',
       inputtype: 'input',
       type: 'text',
-      placeholder: 'Email',
     },
     value: '',
     validation: {
+      isEmail: { value: true, msg: "Invalid email address" },
       required: { value: true, msg: "This field is required" },
-      minLength: { value: 4, msg: `Minimum character length is 4`}
+      minLength: { value: 6, msg: `Minimum character length is 4`}
     },
     touched: false,
   },
@@ -18,10 +18,10 @@ export default {
       label: 'Password',
       inputtype: 'input',
       type: 'text',
-      placeholder: 'Password',
     },
     value: '',
     validation: {
+      isEmail: { value: false, msg: "Invalid email address" },
       required: { value: true, msg: "This field is required" },
       minLength: { value: 6, msg: `Minimum character length is 4`}
     },
@@ -32,10 +32,10 @@ export default {
       label: 'Confirm password',
       inputtype: 'input',
       type: 'text',
-      placeholder: 'Confirm password',
     },
     value: '',
     validation: {
+      isEmail: { value: false, msg: "Invalid email address" },
       required: { value: true, msg: "This field is required" },
       minLength: { value: 6, msg: `Minimum character length is 4`}
     },

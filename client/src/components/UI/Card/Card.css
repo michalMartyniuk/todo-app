@@ -1,4 +1,7 @@
 .Card {
+  font-family: 'Gaegu', cursive;
+  color: #152446;
+  background: whitesmoke;
   width: 70%;
   display: flex;
   flex-direction: column;
@@ -9,7 +12,7 @@
 }
 
 .cardTitle {
-  font-size: 3rem;
+  font-size: 4rem;
   align-self: center;
   margin: .7rem 0 .7rem 0;
 }

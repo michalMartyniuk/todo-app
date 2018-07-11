@@ -2,6 +2,11 @@ import React from 'react';
 import styles from './todo.css';
 
 const todo = props => {
+
+  const editEnterHandler = (e) => {
+    if(e.key === 'Enter') props.edit(props.todo.id);
+  }
+
   return (  
     <div className={styles.wrapper}>
       <div className={styles.todo}>
@@ -11,6 +16,7 @@ const todo = props => {
             type="text"
             value={props.editValue}
             onChange={props.editChange}
+            onKeyDown={editEnterHandler}
           /> :
           <span className={styles.text}>{props.todo.text}</span>
         }

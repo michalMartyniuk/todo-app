@@ -20,13 +20,18 @@ export const getTodos = () => {
 
 export const add = (id, text) => {
   return (dispatch, getState) => {
-    if(localStorage.getItem('token')) {
-      fetcher('POST', 'todo/add', { id, text }, 'auth')
-        .then( res => {
-          console.log(res.data.todos)
-          dispatch({ type: types.SET_TODOS, todos: res.data.todos })
-        })
-        .catch( error => console.log(error))  
+    if(text) {
+      if(localStorage.getItem('token')) {
+        fetcher('POST', 'todo/add', { id, text }, 'auth')
+          .then( res => {
+            dispatch({ type: types.SET_TODOS, todos: res.data.todos })
+          })
+          .catch( error => console.log(error))  
+      }
+      else {
+        const todos = getState().todos.concat({ id, text, completed: false, edit: false });    
+        dispatch({ type: types.SET_TODOS, todos });
+      }
     }
   }
 }
@@ -40,6 +45,10 @@ export const remove = (id) => {
         })
         .catch( error => console.log(error))
     }
+    else {
+      const todos = getState().todos.filter( todo => todo.id !== id);
+      dispatch({ type: types.SET_TODOS, todos });
+    }
   }
 }
 
@@ -52,17 +61,39 @@ export const complete = (id) => {
         })
         .catch( error => console.log(error) )
     }
+    else {
+      const todos = JSON.parse(JSON.stringify(getState().todos))
+      todos.map( todo => {
+        if(todo.id === id) todo.complete = true;
+        return todo;
+      })
+      dispatch({ type: types.SET_TODOS, todos });
+    }
   }
 }
 
 export const update = (id, text) => {
   return (dispatch, getState) => {
-    fetcher('POST', 'todo/update', { id, text }, 'auth')
-      .then( res => {
-        console.log(res)
-        dispatch({ type: types.EDIT, todos: res.data.todos })
+    if(localStorage.getItem('token')) {
+      fetcher('POST', 'todo/update', { id, text }, 'auth')
+        .then( res => {
+          dispatch({ type: types.EDIT, todos: res.data.todos })
+        })
+        .catch( error => console.log(error))
+    }
+    else {
+      let todos = JSON.parse(JSON.stringify(getState().todos));
+      todos.map( todo => {
+        if(todo.id === id) {
+          if(todo.edit === true) {
+            todo.text = text;
+          }
+          todo.edit = !todo.edit
+        }
+        return todo;
       })
-      .catch( error => console.log(error))
+      dispatch({ type: types.SET_TODOS, todos });
+    }
   }
 }
 

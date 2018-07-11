@@ -60,6 +60,7 @@ class SignUpForm extends Component {
       }
       if(userInfo.password === userInfo.confirmPassword) {
         this.props.signup(userInfo);
+        this.props.closeModal();
       }
     }
   }
@@ -88,7 +89,7 @@ class SignUpForm extends Component {
         <form className={styles.Form} onSubmit={this.formSubmitHandler}>
           {inputs}
           <div className={styles.wrapper}>
-            <button className={styles.signup} onClick={this.props.formSubmitHandler}>Sign up</button>
+            <button className={styles.signupBtn} onClick={this.props.formSubmitHandler}>Sign up</button>
           </div>
         </form>
     )

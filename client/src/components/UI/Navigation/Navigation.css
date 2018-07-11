@@ -1,0 +1,106 @@
+.Navigation {
+  font-family: 'Gaegu', cursive;
+  display: flex;
+  background-color: #2f78bc;
+  height: 5rem;
+  width: 100%;
+  padding: 0; 
+  z-index: 70;
+  align-items: center;
+  margin-bottom: 7rem;
+}
+
+.Navigation a:hover {
+  text-decoration: none;
+}
+
+.menu {
+  height: 100%;
+  display: flex;
+  margin-left: auto;
+}
+
+.appTitle {
+  font-size: 3rem;
+}
+
+.linkDiv {
+  display: flex;
+  align-items: center;
+  color: white;
+  font-size: 2.5rem;
+  padding: 0 2rem;
+  height: 100%;
+  cursor: pointer;
+  background-color: transparent;
+  transition: all .2s;
+}
+
+.navText {
+  margin-left: 1rem;
+}
+
+.linkDiv:hover {
+  background-color: #3da857;
+}
+
+.logout {
+  font-size: 2rem;
+  border: none;
+  margin-left: auto;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  color: white;
+  background-color: transparent;
+}
+
+.logout:hover {
+  background-color: #3da857;
+}
+
+.logout:focus {
+  outline: none;
+}
+
+@media(max-width: 760px) {
+  .Navigation {
+    padding: 0;
+  }
+
+  .linkDiv {
+    display: none;
+  }
+
+  .logout {
+    display: none;
+  }
+  
+  .menuIcon {
+    height: 100%;
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all .5s;
+  }
+
+  .menuIcon:hover {
+    background-color: #3da857;
+  }
+  .iconItem {
+    width: 50px;
+    height: 3px;
+    margin: .4rem;
+    background-color: white;
+  }
+}
+
+@media (min-width: 760px) {
+  .linkDiv {
+    display: flex;
+  }
+  .loginLink, .signupLink {
+    display: none;
+  }
+}

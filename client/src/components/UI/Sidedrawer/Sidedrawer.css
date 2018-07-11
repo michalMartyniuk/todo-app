@@ -1,0 +1,53 @@
+.Sidedrawer {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  align-items: center;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  transition: all .5s;
+  background-color: #2f78bc59;
+  width: 45%;
+  z-index: 100;
+  padding-top: 7rem;
+}
+
+.item {
+  background-color: rgb(53, 78, 128);
+  border-radius: 1.5rem;
+  width: 95%;
+  color: white;
+  font-size: 2rem;
+  text-align: center;
+  margin: .7rem 0;
+  padding: 1.2rem 0;
+  transition: all .2s;
+  cursor: pointer;
+  letter-spacing: .5rem;
+  text-decoration: none;
+}
+
+.item:hover {
+  background-color: #7393f1;
+}
+
+.logout {
+  border-radius: 1.5rem;
+  width: 95%;
+  color: white;
+  font-size: 2rem;
+  text-align: center;
+  background-color: #4c3f37;
+  margin: .7rem 0;
+  padding: 1.2rem 0;
+  transition: all .2s;
+  cursor: pointer;
+  letter-spacing: .5rem;
+}
+
+.logout:hover {
+  background-color: #c15711;
+}
+
+
