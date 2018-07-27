@@ -1,6 +1,6 @@
 # To-do application
 #### To-do application using react, redux, node, express, mongoDB
-#### [Go to todo-app] (https://michal-todo-app.herokuapp.com/)
+#### [Go to todo-app](https://michal-todo-app.herokuapp.com/)
 
 ## Functionality
 - Creating account
