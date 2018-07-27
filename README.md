@@ -4,6 +4,7 @@
 ## Functionality
 - Creating account
 - Logging in
+- MongoDB(mLab) connected
 - Adding to-do to your list
 - Editing/deleting to-do items from list
 - Checking to-do items as complete and adding them to seperate complete list
