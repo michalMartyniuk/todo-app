@@ -1,7 +1,6 @@
-# To-do application
+# [To-do application](https://michal-todo-app.herokuapp.com)
+#### https://michal-todo-app.herokuapp.com
 #### To-do application using react, redux, node, express, mongoDB
-#### [Go to todo-app](https://michal-todo-app.herokuapp.com/)
-#### https://michal-todo-app.herokuapp.com/
 
 ## Functionality
 - Creating account
